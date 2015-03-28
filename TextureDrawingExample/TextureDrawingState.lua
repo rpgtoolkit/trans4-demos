@@ -22,8 +22,8 @@ function state.initialize()
 	else
 		-- If it did load correctly, we can actually find out
 		-- it's width and height
-		print("Texture width:", texture:width())
-		print("Texture height:", texture:height())
+		print("Texture width:", texture:width()) -- 400
+		print("Texture height:", texture:height()) -- 400
 	end
 end
 
@@ -49,10 +49,16 @@ end
 
 function state.render()
 	if switch == "default" then 
+		-- We can draw the texture at any x,y position.
+		-- The last two parameters are the width and height.
+		-- If they are 0, the texture's width and height are
+		-- used
 		tk.graphics.drawTexture(texture, 50, 50, 0, 0)
 	elseif switch == "stretch" then 
+		-- Here we stretch the texture to fit the whole screen
 		tk.graphics.drawTexture(texture, 0, 0, 640, 480)
 	elseif switch == "compress" then
+		-- Here we draw the texture at half its size
 		tk.graphics.drawTexture(texture, 50, 50, 200, 200)
 	end
 end
