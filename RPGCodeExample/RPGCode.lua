@@ -20,7 +20,15 @@ function keyDown(_a)
 	end
 	return false
 end
-function setImage(_a,_b,_c,_d,_e,_f,_g,_h)	--setImage(image,x,y,x on image,y on image,w,h,canvas);
+function setImage(_a,_b,_c,_d,_e,_f)	--setImage(image,x,y,w,h,canvas);
+	local _i = tk.graphics.loadTexture(_a)
+	if _i == nil then
+		print ("Couldn't load image ".._a)
+		return false
+	end
+	_f:drawClip(_i, _b, _c, 0, 0, _d, _e)
+end
+function setSpriteSheetImage(_a,_b,_c,_d,_e,_f,_g,_h)	--setImage(image,x,y,x on image,y on image,w,h,canvas);
 	local _i = tk.graphics.loadTexture(_a)
 	if _i == nil then
 		print ("Couldn't load image ".._a)
@@ -44,8 +52,8 @@ function state.initialize()
 	colorRGB(0,255,0)
 	fillRect(0,0,32,32,grass)
 	colorRGB(0,0,0)
-	setImage("tileset_player.png",0,0,2*32,0*32,32,32,player.canvas)
-	setImage("fullHeart.png",0,0,0,0,16,16,heart.canvas)
+	setSpriteSheetImage("tileset_player.png",0,0,2*32,0*32,32,32,player.canvas)
+	setImage("fullHeart.png",0,0,16,16,heart.canvas)
 end
 function state.pause()
 	print("TextureDrawer Paused.")
