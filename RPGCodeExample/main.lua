@@ -1,3 +1,3 @@
-CDS = require 'RPGCode'	--'Zelda'
+CDS = require 'RPGCode'
 
 tk.game.pushState("CDS")
